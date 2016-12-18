@@ -1,0 +1,14 @@
+﻿<div class="ui-g">
+    <div class="ui-g-12">
+        <p-tabMenu [model]="items"></p-tabMenu>
+    </div>
+</div>
+<div class="ui-g" #pnl>
+    <div class="ui-g-12">
+        <!--<p-messages [value]="msgs" [closable]="true"></p-messages>-->
+        <p-growl [value]="growlMsgs" [life]="1000"></p-growl>        
+        <router-outlet></router-outlet>
+    </div>
+</div>
+<p-blockUI [blocked]="blockedDocument"></p-blockUI>
+

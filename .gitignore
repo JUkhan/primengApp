@@ -250,3 +250,15 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+app/
+scripts
+node_modules
+jspm_packages
+link-checker-results.txt
+**/*npm-debug.log.*
+*.js.map
+e2e/**/*.js
+e2e/**/*.js.map
+_test-output
+_temp
