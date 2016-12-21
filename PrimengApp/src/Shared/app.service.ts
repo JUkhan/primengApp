@@ -22,7 +22,7 @@ export class AppService {
         if (this.baseUrl) {
             return this.baseUrl;
         }
-        this.baseUrl = jQuery('base ').attr('href') || '/';
+        this.baseUrl = jQuery('base ').attr('href') || '/';        
         this.baseUrl += '';
         return this.baseUrl;
     }
@@ -48,7 +48,7 @@ export class AppService {
     errorHandler(obj: any) {
         this.overlay(false);
         this.notifyAll({ key: 'error', value: obj.statusText || 'Invalid Url' });
-        return Observable.of(false);
+        return Observable.throw(obj);
     }
     hideOverlay(obj) {
         this.overlay(false);
@@ -122,14 +122,14 @@ export class AppService {
         }));
     }
     overlay(show) {
-        if (!this.overLayElement) {
-            this.overLayElement = jQuery('.overlay');
-        }
-        if (show) {
-            this.overLayElement.show();
-        } else {
-            this.overLayElement.hide();
-        }
+        //if (!this.overLayElement) {
+        //    this.overLayElement = jQuery('.overlay');
+        //}
+        //if (show) {
+        //    this.overLayElement.show();
+        //} else {
+        //    this.overLayElement.hide();
+        //}
     }
     
 }
