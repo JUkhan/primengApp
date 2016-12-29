@@ -4,7 +4,7 @@ import {AppService} from '../Shared/app.service';
     moduleId: module.id,
     selector: 'await',
     template: `
-<p-dataTable [value]="list">
+<div [style.display]="!mapContent?'block':'none'"><p-dataTable [value]="list">
     <header>Await List</header>
     <p-column field="ocr_content" header="Content"></p-column>
     <p-column header="Action" >
@@ -13,17 +13,21 @@ import {AppService} from '../Shared/app.service';
          </template>    
     </p-column>
     
-</p-dataTable>
-<map-component [text]="map.ocr_content" (onSave)="save($event)"></map-component>
+</p-dataTable></div>
+ <div [style.display]="mapContent?'block':'none'">
+        <map-component [text]="map.ocr_content" (onSave)="save($event)"></map-component>
+ </div>
     `
 })
 export class AwaitListComponent {
     list: any[] = [{ ocr_content:'Content1', id:1}];
     map: any = {};
+    mapContent: boolean = false;
     constructor(private service: AppService) {
         this.loadData();
     }
-    private selectRow(row) {
+    private selectRow(row) {        
+        this.mapContent = true;
         this.map = row;
     }
 
@@ -33,7 +37,8 @@ export class AwaitListComponent {
     private save(data) {
         this.service.post('OCR/SaveAwait', { id: this.map.id, ocr_map: data })
             .subscribe(res => {
-                console.log(res);
+                this.loadData();
+                this.mapContent = false;
             });
     }
 }

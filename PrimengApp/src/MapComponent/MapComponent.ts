@@ -7,8 +7,8 @@ import {SelectItem} from 'primeng/primeng';
     template: ` 
     <div class="ui-g">
          <div class="ui-g-1">Key Words </div>
-         <div class="ui-g-2">
-            <p-dropdown [options]="kewWords" (onChange)="optionChange($event)"></p-dropdown> 
+         <div class="ui-g-6">
+            <p-dropdown [options]="kewWords" [style]="{'width':'200px'}" (onChange)="optionChange($event)"></p-dropdown> 
          </div>
     </div>
     <div class="ui-g">
